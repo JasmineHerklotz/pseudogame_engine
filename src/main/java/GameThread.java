@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class GameThread extends JPanel{
 
     private int counter = 0;
+    private final KeyboardListener keyboardListener;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -29,8 +31,11 @@ public class GameThread extends JPanel{
         window.setTitle(Commons.title);
         window.setVisible(true);
 
+        keyboardListener = new KeyboardListener();
+
         initialize();
         window.add(this);
+        window.addKeyListener(keyboardListener);
         startGame();
 
 
@@ -53,7 +58,12 @@ public class GameThread extends JPanel{
     }
 
     private void update() {
+        checkInputs();
+    }
 
+    private void checkInputs() {
+        if(keyboardListener.keys[KeyEvent.VK_SPACE])
+            System.out.println("space");
     }
 
     @Override
