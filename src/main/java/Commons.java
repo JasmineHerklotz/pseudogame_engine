@@ -8,4 +8,6 @@ public interface Commons {
 
     String title = "first Java Game";
 
+    int FPS = 60;
+
 }
