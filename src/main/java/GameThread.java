@@ -65,16 +65,16 @@ public class GameThread extends JPanel{
     private void checkInputs() {
 
         if(keyboardListener.keys[KeyEvent.VK_W])
-            player.setY(player.getY() -1);
+            player.setY(player.getY() - player.getPlayerSpeed());
 
         if(keyboardListener.keys[KeyEvent.VK_S])
-            player.setY(player.getY() + 1);
+            player.setY(player.getY() + player.getPlayerSpeed());
 
         if(keyboardListener.keys[KeyEvent.VK_D])
-            player.setX(player.getX() + 1);
+            player.setX(player.getX() + player.getPlayerSpeed());
 
         if(keyboardListener.keys[KeyEvent.VK_A])
-            player.setX(player.getX() - 1);
+            player.setX(player.getX() - player.getPlayerSpeed());
 
     }
 
