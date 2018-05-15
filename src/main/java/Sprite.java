@@ -52,5 +52,7 @@ public abstract class Sprite {
 
     public void setIi(ImageIcon ii) {
         this.ii = ii;
+        setImage_width(ii.getIconWidth());
+        setImage_height(ii.getIconHeight());
     }
 }

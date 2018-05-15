@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 /**
  * @author Burak Kara
  */
@@ -11,12 +9,7 @@ public class Player extends Sprite {
         super(x, y);
     }
 
-    @Override
-    public void setIi(ImageIcon ii) {
-        super.setIi(ii);
-        setImage_width(ii.getImage().getWidth(null));
-        setImage_height(ii.getIconHeight());
-    }
+
 
     @Override
     public void setX(int x) {
