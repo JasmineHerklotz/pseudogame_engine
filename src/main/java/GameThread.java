@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -60,6 +61,16 @@ public class GameThread extends JPanel{
 
     private void update() {
         checkInputs();
+        moveShots();
+    }
+
+    private void moveShots() {
+        for (Iterator<Shot> iterator = player.getShots().iterator(); iterator.hasNext();){
+            Shot shot = iterator.next();
+            shot.setX(shot.getX() + 10);
+            if(shot.getX() >= Commons.width)
+                iterator.remove();
+        }
     }
 
     private void checkInputs() {

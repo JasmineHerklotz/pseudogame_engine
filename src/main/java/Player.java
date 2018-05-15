@@ -13,7 +13,6 @@ public class Player extends Sprite {
     }
 
     public void shoot(){
-        System.out.println(getX());
         shots.add(new Shot(getX(),getY()));
     }
 

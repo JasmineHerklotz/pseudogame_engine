@@ -9,6 +9,4 @@ public class Shot extends Sprite {
         this.setIi(new ImageIcon(this.getClass().getResource("shot.png")));
     }
 
-
-
 }
