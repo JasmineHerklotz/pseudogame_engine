@@ -23,7 +23,7 @@ public class GameThread extends JPanel{
 
     public GameThread(){
         JFrame window = new JFrame();
-        window.setSize(Commons.height, Commons.width);
+        window.setSize(Commons.width, Commons.height);
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setFocusable(true);
