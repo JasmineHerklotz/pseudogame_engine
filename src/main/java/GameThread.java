@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -10,8 +9,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class GameThread extends JPanel{
 
-    private int counter = 0;
     private final KeyboardListener keyboardListener;
+    private Player player;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -43,7 +42,8 @@ public class GameThread extends JPanel{
     }
 
     private void initialize() {
-
+        player = new Player(0,0);
+        player.setIi(new ImageIcon(this.getClass().getResource("wizard1Right.png")));
     }
 
     private void startGame() {
@@ -62,14 +62,13 @@ public class GameThread extends JPanel{
     }
 
     private void checkInputs() {
-        if(keyboardListener.keys[KeyEvent.VK_SPACE])
-            System.out.println("space");
+
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-
+        g2d.drawImage(player.getIi().getImage(),player.getX(), player.getY(),null);
     }
 }
