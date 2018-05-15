@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -62,6 +63,18 @@ public class GameThread extends JPanel{
     }
 
     private void checkInputs() {
+
+        if(keyboardListener.keys[KeyEvent.VK_W])
+            player.setY(player.getY() -1);
+
+        if(keyboardListener.keys[KeyEvent.VK_S])
+            player.setY(player.getY() + 1);
+
+        if(keyboardListener.keys[KeyEvent.VK_D])
+            player.setX(player.getX() + 1);
+
+        if(keyboardListener.keys[KeyEvent.VK_A])
+            player.setX(player.getX() - 1);
 
     }
 
