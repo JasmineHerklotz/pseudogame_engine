@@ -23,19 +23,22 @@ public class GameThread extends JPanel{
 
     public GameThread(){
         JFrame window = new JFrame();
-        window.setSize(Commons.width, Commons.height);
+        window.getContentPane().add(new Window());
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setFocusable(true);
         window.setLocationRelativeTo(null);
         window.setTitle(Commons.title);
         window.setVisible(true);
+        window.pack();
+        window.setLocationRelativeTo(null);
 
         keyboardListener = new KeyboardListener();
 
         initialize();
         window.add(this);
         window.addKeyListener(keyboardListener);
+
         startGame();
 
 
