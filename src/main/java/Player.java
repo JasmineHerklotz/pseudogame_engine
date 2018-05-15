@@ -1,15 +1,21 @@
+import java.util.ArrayList;
+
 /**
  * @author Burak Kara
  */
 public class Player extends Sprite {
 
-    private int playerSpeed = 20;
+    private int playerSpeed = 2;
+    private ArrayList<Shot> shots = new ArrayList<>();
 
     public Player(int x, int y) {
         super(x, y);
     }
 
-
+    public void shoot(){
+        System.out.println(getX());
+        shots.add(new Shot(getX(),getY()));
+    }
 
     @Override
     public void setX(int x) {
@@ -41,5 +47,13 @@ public class Player extends Sprite {
 
     public void setPlayerSpeed(int playerSpeed) {
         this.playerSpeed = playerSpeed;
+    }
+
+    public ArrayList<Shot> getShots() {
+        return shots;
+    }
+
+    public void setShots(ArrayList<Shot> shots) {
+        this.shots = shots;
     }
 }

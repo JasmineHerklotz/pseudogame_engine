@@ -40,9 +40,6 @@ public class GameThread extends JPanel{
         window.addKeyListener(keyboardListener);
 
         startGame();
-
-
-
     }
 
     private void initialize() {
@@ -79,6 +76,9 @@ public class GameThread extends JPanel{
         if(keyboardListener.keys[KeyEvent.VK_A])
             player.setX(player.getX() - player.getPlayerSpeed());
 
+        if(keyboardListener.keys[KeyEvent.VK_SPACE])
+            player.shoot();
+
     }
 
     @Override
@@ -86,5 +86,11 @@ public class GameThread extends JPanel{
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(player.getIi().getImage(),player.getX(), player.getY(),null);
+
+        //draw shots
+        for (Shot shot : player.getShots()){
+            g2d.drawImage(shot.getIi().getImage(), shot.getX(), shot.getY(), null);
+        }
+
     }
 }
