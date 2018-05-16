@@ -67,7 +67,7 @@ public class GameThread extends JPanel{
     private void moveShots() {
         for (Iterator<Shot> iterator = player.getShots().iterator(); iterator.hasNext();){
             Shot shot = iterator.next();
-            shot.setX(shot.getX() + 10);
+            shot.move();
             if(shot.getX() >= Commons.width)
                 iterator.remove();
         }
@@ -75,17 +75,28 @@ public class GameThread extends JPanel{
 
     private void checkInputs() {
 
-        if(keyboardListener.keys[KeyEvent.VK_W])
+        player.setDirectionX(null);
+        player.setDirectionY(null);
+
+        if(keyboardListener.keys[KeyEvent.VK_W]){
             player.setY(player.getY() - player.getPlayerSpeed());
+            player.setDirectionY(Direction.UP);
+        }
 
-        if(keyboardListener.keys[KeyEvent.VK_S])
+        if(keyboardListener.keys[KeyEvent.VK_S]){
             player.setY(player.getY() + player.getPlayerSpeed());
+            player.setDirectionY(Direction.DOWN);
+        }
 
-        if(keyboardListener.keys[KeyEvent.VK_D])
+        if(keyboardListener.keys[KeyEvent.VK_D]){
             player.setX(player.getX() + player.getPlayerSpeed());
+            player.setDirectionX(Direction.RIGHT);
+        }
 
-        if(keyboardListener.keys[KeyEvent.VK_A])
+        if(keyboardListener.keys[KeyEvent.VK_A]){
             player.setX(player.getX() - player.getPlayerSpeed());
+            player.setDirectionX(Direction.LEFT);
+        }
 
         if(keyboardListener.keys[KeyEvent.VK_SPACE])
             player.shoot();

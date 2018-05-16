@@ -8,12 +8,15 @@ public class Player extends Sprite {
     private int playerSpeed = 2;
     private ArrayList<Shot> shots = new ArrayList<>();
 
+    private Direction directionX;
+    private Direction directionY;
+
     public Player(int x, int y) {
         super(x, y);
     }
 
     public void shoot(){
-        shots.add(new Shot(getX(),getY()));
+        shots.add(new Shot(getX(),getY(),directionX, directionY));
     }
 
     @Override
@@ -54,5 +57,21 @@ public class Player extends Sprite {
 
     public void setShots(ArrayList<Shot> shots) {
         this.shots = shots;
+    }
+
+    public Direction getDirectionX() {
+        return directionX;
+    }
+
+    public void setDirectionX(Direction directionX) {
+        this.directionX = directionX;
+    }
+
+    public Direction getDirectionY() {
+        return directionY;
+    }
+
+    public void setDirectionY(Direction directionY) {
+        this.directionY = directionY;
     }
 }
