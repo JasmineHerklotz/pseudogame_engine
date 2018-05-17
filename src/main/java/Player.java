@@ -11,12 +11,22 @@ public class Player extends Sprite {
     private Direction directionX;
     private Direction directionY;
 
+    private long counterPauseShoot;
+    private long pauseShoot = 1000;
+
     public Player(int x, int y) {
         super(x, y);
+        counterPauseShoot = Long.MAX_VALUE;
     }
 
     public void shoot(){
-        shots.add(new Shot(getX(),getY(),directionX, directionY));
+
+        if (counterPauseShoot + pauseShoot <= System.currentTimeMillis()){
+            counterPauseShoot = System.currentTimeMillis();
+            shots.add(new Shot(getX(),getY(),directionX, directionY));
+        }
+
+
     }
 
     @Override
