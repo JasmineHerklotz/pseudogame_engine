@@ -108,6 +108,8 @@ public class GameThread extends JPanel{
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(player.getIi().getImage(),player.getX(), player.getY(),null);
+        g2d.drawRect(player.getX(), player.getY() - 20, player.getImage_width(), 10);
+        g2d.fillRect(player.getX(), player.getY() - 20, player.getPauseValue(),10);
 
         //draw shots
         for (Shot shot : player.getShots()){

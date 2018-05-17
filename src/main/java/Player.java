@@ -19,13 +19,37 @@ public class Player extends Sprite {
         counterPauseShoot = Long.MAX_VALUE;
     }
 
+    public int getPauseValue(){
+
+        double pause = counterPauseShoot + pauseShoot;
+
+        double difference =  pause - System.currentTimeMillis();
+
+        double percentage = getImage_width() / difference;
+
+        int output;
+
+
+        if (percentage < 0){
+            output = 0;
+        }else if(percentage >= 1){
+            output = getImage_width();
+        }else {
+            output = (int) (percentage * getImage_width());
+            if (output < 0.1){
+                output *= 10;
+            }
+        }
+
+        return output;
+    }
+
     public void shoot(){
 
         if (counterPauseShoot + pauseShoot <= System.currentTimeMillis()){
             counterPauseShoot = System.currentTimeMillis();
             shots.add(new Shot(getX(),getY(),directionX, directionY));
         }
-
 
     }
 
